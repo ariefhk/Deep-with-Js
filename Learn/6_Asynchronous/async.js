@@ -45,25 +45,51 @@
 //   console.log(value);
 // });
 
-const helperPromise = (x, y) => {
+// const helperPromise = (x, y) => {
+//   const promise = new Promise((resolve, reject) => {
+//     if (x === y) {
+//       resolve("String sama aja bro");
+//     } else {
+//       reject("String beda");
+//     }
+//   });
+
+//   return promise;
+// };
+
+// const demoPromise = async (x, y) => {
+//   try {
+//     let message = await helperPromise(x, y);
+//     console.log(message);
+//   } catch (error) {
+//     console.log(`Error: ${error}`);
+//   }
+// };
+
+// demoPromise("aku sayang kamu", "aku sayang kamu");
+
+const periksaDokter = (antrian) => {
   const promise = new Promise((resolve, reject) => {
-    if (x === y) {
-      resolve("String sama aja bro");
+    if (antrian > 50) {
+      let message = "Inimah masih lama, pulang dulu ah";
+      resolve(message);
+    } else if (antrian <= 50) {
+      let message2 = "Dikit lagi nih, udh g sabar";
+      resolve(message2);
     } else {
-      reject("String beda");
+      reject("Inputan Anda bukan Number!");
     }
   });
-
   return promise;
 };
 
-const demoPromise = async (x, y) => {
+const angkaKartu = async (number) => {
   try {
-    let message = await helperPromise(x, y);
-    console.log(message);
+    const perkataanku = await periksaDokter(number);
+    console.log(perkataanku);
   } catch (error) {
-    console.log(`Error: ${error}`);
+    console.log(error);
   }
 };
 
-demoPromise("aku sayang kamu", "aku sayang kamu");
+angkaKartu(10);
